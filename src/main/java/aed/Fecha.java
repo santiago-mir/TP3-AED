@@ -1,8 +1,10 @@
 package aed;
 
 public class Fecha {
+    private Object[] agenda;
+
     public Fecha(int dia, int mes) {
-        throw new UnsupportedOperationException("No implementada aun");
+        agenda[0] = dia;
     }
 
     public Fecha(Fecha fecha) {

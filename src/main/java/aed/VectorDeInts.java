@@ -67,11 +67,9 @@ class VectorDeInts implements SecuenciaDeInts {
 
     public VectorDeInts copiar() {
         VectorDeInts nuevoArr = new VectorDeInts();
-        nuevoArr.array = new int[longitudVector];
-        nuevoArr.longitudVector = longitudVector;
         int j = 0;
         while (j < longitudVector) {
-            nuevoArr.array[j] = array[j];
+            nuevoArr.agregarAtras(array[j]);
             j++;
         }
         return nuevoArr;
