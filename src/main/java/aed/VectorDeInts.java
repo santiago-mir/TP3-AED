@@ -56,17 +56,25 @@ class VectorDeInts implements SecuenciaDeInts {
                 j++;
             }
             array = nuevoArr;
-            longitudVector--;
-        }
 
+        }
+        longitudVector--;
     }
 
     public void modificarPosicion(int indice, int valor) {
-        throw new UnsupportedOperationException("No implementada aun");
+        array[indice] = valor; // tienen que pasarme un indice valido
     }
 
     public VectorDeInts copiar() {
-        throw new UnsupportedOperationException("No implementada aun");
+        VectorDeInts nuevoArr = new VectorDeInts();
+        nuevoArr.array = new int[longitudVector];
+        nuevoArr.longitudVector = longitudVector;
+        int j = 0;
+        while (j < longitudVector) {
+            nuevoArr.array[j] = array[j];
+            j++;
+        }
+        return nuevoArr;
     }
 
 }
