@@ -11,8 +11,14 @@ class VectorDeInts implements SecuenciaDeInts {
     }
 
     public VectorDeInts(VectorDeInts vector) {
-        array = new int[vector.longitudVector - 1];
+        array = new int[vector.longitudVector];
         longitudVector = vector.longitudVector;
+
+        int j = 0;
+        while (j < longitudVector) {
+            array[j] = vector.array[j];
+            j++;
+        }
     }
 
     public int longitud() {
@@ -20,15 +26,39 @@ class VectorDeInts implements SecuenciaDeInts {
     }
 
     public void agregarAtras(int i) {
-        throw new UnsupportedOperationException("No implementada aun");
+        if (longitudVector < CAPACIDAD_INICIAL) {
+            array[longitudVector] = i;
+        } else {
+            int[] nuevoArr = new int[longitudVector + 1];
+            int j = 0;
+            while (j < longitudVector) {
+                nuevoArr[j] = array[j];
+                j++;
+            }
+            nuevoArr[longitudVector] = i;
+            array = nuevoArr;
+        }
+        longitudVector++;
     }
 
     public int obtener(int i) {
-        throw new UnsupportedOperationException("No implementada aun");
+        return array[i];
     }
 
     public void quitarAtras() {
-        throw new UnsupportedOperationException("No implementada aun");
+        if (longitudVector == CAPACIDAD_INICIAL) {
+            new VectorDeInts();
+        } else {
+            int[] nuevoArr = new int[longitudVector - 1];
+            int j = 0;
+            while (j < longitudVector - 1) {
+                nuevoArr[j] = array[j];
+                j++;
+            }
+            array = nuevoArr;
+            longitudVector--;
+        }
+
     }
 
     public void modificarPosicion(int indice, int valor) {
