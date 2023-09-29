@@ -10,7 +10,8 @@ public class Fecha {
     }
 
     public Fecha(Fecha fecha) {
-        throw new UnsupportedOperationException("No implementada aun");
+        date = fecha.date;
+        month = fecha.month;
     }
 
     public Integer dia() {
