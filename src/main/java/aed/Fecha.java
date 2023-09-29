@@ -1,10 +1,12 @@
 package aed;
 
 public class Fecha {
-    private Object[] agenda;
+    private int date;
+    private int month;
 
     public Fecha(int dia, int mes) {
-        agenda[0] = dia;
+        date = dia;
+        month = mes;
     }
 
     public Fecha(Fecha fecha) {
@@ -12,24 +14,44 @@ public class Fecha {
     }
 
     public Integer dia() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return date;
     }
 
     public Integer mes() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return month;
     }
 
+    @Override
     public String toString() {
-        throw new UnsupportedOperationException("No implementada aun");
+        StringBuffer sbuffer = new StringBuffer();
+        sbuffer.append(date + "/" + month);
+        return sbuffer.toString();
     }
 
     @Override
     public boolean equals(Object otra) {
-        throw new UnsupportedOperationException("No implementada aun");
+        boolean oen = (otra == null);
+        boolean cd = (otra.getClass() != this.getClass());
+        if (oen || cd) {
+            return false;
+        }
+        Fecha otraFecha = (Fecha) otra;
+        return (date == otraFecha.date && month == otraFecha.month);
     }
 
     public void incrementarDia() {
-        throw new UnsupportedOperationException("No implementada aun");
+        int fechaLimite = diasEnMes(month);
+        if (month == 12 && fechaLimite == date) {
+            date = 1;
+            month = 1;
+        } else {
+            if (date == fechaLimite) {
+                date = 1;
+                month++;
+            } else {
+                date++;
+            }
+        }
     }
 
     private int diasEnMes(int mes) {
